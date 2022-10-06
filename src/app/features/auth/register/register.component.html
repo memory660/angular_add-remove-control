@@ -1,0 +1,133 @@
+
+      <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div fxLayout="column" fxLayoutAlign="space-around center" >
+
+          <mat-radio-group aria-label="Select an option" formControlName="type" [value]="'particulier'">
+            <mat-radio-button value="particulier" [checked]="true" checked >Un particulier</mat-radio-button>
+            <mat-radio-button value="professionnel">Un professionnel</mat-radio-button>
+          </mat-radio-group>
+
+          <div>
+            <mat-form-field *ngIf="isProfessionnel" appearance="fill">
+              <div [formGroup]="denominationForm">
+                <input
+                  matInput
+                  #denomination
+                  placeholder="Dénomination"
+                  formControlName="denomination"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && fd['denomination'].errors }"
+                />
+
+                <mat-error
+                  *ngIf="submitted && fd['denomination'].errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="fd['denomination'].errors['required']">
+                    obligatoire
+                  </div>
+                </mat-error>
+              </div>
+            </mat-form-field>
+          </div>
+
+
+          <div>
+            <mat-form-field appearance="fill">
+              <input
+                matInput
+                #firstname
+                placeholder="Prénom"
+                formControlName="firstname"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['firstname'].errors }"
+              />
+
+              <mat-error
+                *ngIf="submitted && f['firstname'].errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['firstname'].errors['required']">
+                  obligatoire
+                </div>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="fill">
+              <input
+                matInput
+                #firstname
+                placeholder="Nom"
+                formControlName="lastname"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['lastname'].errors }"
+              />
+
+              <mat-error
+                *ngIf="submitted && f['lastname'].errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['lastname'].errors['required']">
+                  obligatoire
+                </div>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="fill" class="example-full-width">
+              <input
+                #email
+                matInput
+                placeholder="email"
+                formControlName="email"
+                type="email"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['email'].invalid }"
+              />
+
+              <mat-error
+                *ngIf="submitted && f['email'].errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['email'].errors['required']">
+                 obligatoire
+                </div>
+                <div *ngIf="f['email'].errors['pattern']">
+                  L'email doit être dans un format valide
+                </div>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="fill">
+              <input
+                matInput
+                #firstname
+                placeholder="Téléphone"
+                formControlName="phone"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }"
+              />
+
+              <mat-error
+                *ngIf="submitted && f['phone'].errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['phone'].errors['required']">
+                  obligatoire
+                </div>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <button mat-raised-button color="primary" type="submit">
+            suivant
+          </button>
+
+        </div>
+      </form>
+
